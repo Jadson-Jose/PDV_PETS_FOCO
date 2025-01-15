@@ -1,4 +1,4 @@
-# PDV PETS FOCO
+# PDV PETS EM FOCO
 
 Este é um projeto de **PDV (Ponto de Venda)** para o setor de **e-commerce de pets**, desenvolvido com Django. O sistema tem como objetivo gerenciar produtos, estoque e pedidos de uma loja de pets, permitindo uma experiência de compra eficiente e intuitiva.
 
