@@ -18,3 +18,6 @@ class SaleItem(models.Model):
                              on_delete=models.CASCADE, related_name="Items")
     quantity = models.PositiveIntegerField(_("Quantity")) # type: ignore
     subtotal = models.DecimalField(_("Subtotal"), max_digits=10, decimal_places=2) # type: ignore
+    
+    
+    #TODO Continuar criando as models de customer e supllier 
