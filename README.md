@@ -82,14 +82,14 @@ Faça login com o superusuário criado anteriormente.
 
 pdv-pets-foco/
 │</br>
-├── core/  </br>              # Aplicativo principal do projeto
-├── product/ </br>            # Gerenciamento de produtos
-├── order/  </br>             # Gerenciamento de pedidos
-├── supplier/            # Cadastro de fornecedores
-├── templates/           # Templates HTML
-├── static/              # Arquivos estáticos (CSS, JS, imagens)
-├── manage.py            # Script principal do Django
-└── requirements.txt     # Dependências do projeto
+├── core/                # Aplicativo principal do projeto </br> 
+├── product/             # Gerenciamento de produtos </br> 
+├── order/               # Gerenciamento de pedidos </br> 
+├── supplier/            # Cadastro de fornecedores </br> 
+├── templates/           # Templates HTML </br> 
+├── static/              # Arquivos estáticos (CSS, JS, imagens) </br> 
+├── manage.py            # Script principal do Django </br> 
+└── requirements.txt     # Dependências do projeto </br> 
 
 
 
