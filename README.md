@@ -83,7 +83,7 @@ Faça login com o superusuário criado anteriormente.
 pdv-pets-foco/
 │
 
-├── core/                # Aplicativo principal do projeto
+├── core/  </br>              # Aplicativo principal do projeto
 ├── product/             # Gerenciamento de produtos
 ├── order/               # Gerenciamento de pedidos
 ├── supplier/            # Cadastro de fornecedores
