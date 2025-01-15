@@ -92,6 +92,7 @@ pdv-pets-foco/
 └── requirements.txt     # Dependências do projeto
 
 
+
 ## Contribuições
 
 Contribuições são bem-vindas! Para contribuir, siga as etapas abaixo:
