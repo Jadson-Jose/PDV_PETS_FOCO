@@ -38,4 +38,4 @@ class CategoryModelTest(TestCase):
         category = Category.objects.create(name="Higiene")
         self.assertEqual(str(category), "Higiene")
 
-# TODO CONTINUAR OS TESTES PRODUCT
+# TODO CONTINUAR OS TESTES PRODUCT and more
