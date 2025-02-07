@@ -97,3 +97,54 @@ class ProductModelTest(TestCase):
                 category=self.category,
                 barcode="1122334455"
             )
+
+    def test_product_price_positive(self):
+        product = Product(
+            name="Teste de Produto 4",
+            description="Teste de descrição 4",
+            price=-10.00,
+            stock=75,
+            category=self.category,
+            barcode=5544332211
+        )
+        with self.assertRaises(ValidationError):
+            product.full_clean()
+            product.save()
+
+    def test_product_stock_positive(self):
+        product = Product(
+            name="Teste de Produto 5",
+            description="Teste de descrição 5",
+            price=10.00,
+            stock=-5,
+            category=self.category,
+            barcode="66767889900"
+        )
+        with self.assertRaises(ValidationError):
+            product.full_clean()
+            product.save()
+
+    def test_product_category_relationship(self):
+        product = Product(
+            name="Teste de Produto 6",
+            description="Teste de descrição 6",
+            price=15.00,
+            stock=60,
+            category=self.category,
+            barcode="12121121211212"
+        )
+        product.save()
+        self.assertEqual(product.category, self.category)
+        self.assertEqual(self.category.products.count(), 1)
+
+    def test_product_srt_representation(self):
+        product = Product(
+            name="Teste de Produto 7",
+            description="Teste de descrição 7",
+            price=20.00,
+            stock=80,
+            category=self.category,
+            barcode="131313131313"
+        )
+        product.save()
+        self.assertEqual(str(product), product.name)
