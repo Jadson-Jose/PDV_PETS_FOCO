@@ -15,7 +15,7 @@ class Category(models.Model):
 class Product(models.Model):
 
     name = models.CharField(("Product Name"), max_length=200)
-    description = models.TextField(("Product Description"))  # type: ignore
+    description = models.TextField(("Product Description"))
     price = models.DecimalField(
         ("Product Price"), max_digits=10, decimal_places=2,
         validators=[MinValueValidator(0)])
@@ -23,16 +23,16 @@ class Product(models.Model):
         ("Product Stock"), validators=[MinValueValidator(0)])
     category = models.ForeignKey("Category", verbose_name=(
         "Category"), on_delete=models.CASCADE,
-        related_name="products")  # type: ignore
+        related_name="products")
     barcode = models.CharField(
-        ("Barcode"), max_length=50, unique=True)  # type: ignore
-    # type: ignore # Para produtos perecíveis
+        ("Barcode"), max_length=50, unique=True)
+
     expiration_date = models.DateField(
         ("Experation Date"), blank=True, null=True)
     created_at = models.DateTimeField(
-        ("Created At"), auto_now_add=True)  # type: ignore
+        ("Created At"), auto_now_add=True)
     updated_at = models.DateTimeField(
-        ("Updated At"), auto_now_add=True)  # type: ignore
+        ("Updated At"), auto_now=True)
 
     def __str__(self):
         return self.name

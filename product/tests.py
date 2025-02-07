@@ -3,6 +3,7 @@ from django.db import IntegrityError
 from .models import Category, Product
 from datetime import date
 from django.core.exceptions import ValidationError
+import time
 
 
 class CategoryModelTest(TestCase):
@@ -148,3 +149,44 @@ class ProductModelTest(TestCase):
         )
         product.save()
         self.assertEqual(str(product), product.name)
+
+    def test_product_updated_at_field(self):
+        product = Product.objects.create(
+            name="Teste Updated At",
+            description="Teste de updated_at",
+            price=10.00,
+            stock=10,
+            category=self.category,
+            barcode="TEST1234"
+        )
+        old_updated_at = product.updated_at
+        # Aguarda um segundo para garantir a diferença de tempo
+        time.sleep(1)
+        product.description = "Descrição atualizada"
+        product.save()
+        product.refresh_from_db()
+        self.assertGreater(product.updated_at, old_updated_at)
+
+    def test_product_name_max_legth(self):
+        product = Product.objects.create(
+            name="a" * 201,
+            description="Teste de Descricao",
+            price=45.23,
+            stock=98,
+            category=self.category,
+            barcode="TSTE02032"
+        )
+        with self.assertRaises(ValidationError):
+            product.full_clean()
+
+    def test_product_barcode_max_length(self):
+        product = Product(
+            name="Produto com barcode longo",
+            description="Teste de descrição",
+            price=10.00,
+            stock=10,
+            category=self.category,
+            barcode="a" * 200
+        )
+        with self.assertRaises(ValidationError):
+            product.full_clean()
