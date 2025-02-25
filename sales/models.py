@@ -1,4 +1,6 @@
 from django.db import models
+from django.core.exceptions import ValidationError
+
 
 class Sale(models.Model):
     PAYMENT_METHODS = [
@@ -17,5 +19,9 @@ class Sale(models.Model):
     total = models.DecimalField(
         ("Total"), max_digits=10, decimal_places=2, default=0)
     
+    def clean(self):
+        if self.total < 0:
+            raise ValidationError("O total não pode ser negativo.")
+
     def __str__(self):
         return f"Sale #{self.id} - {self.total}"
